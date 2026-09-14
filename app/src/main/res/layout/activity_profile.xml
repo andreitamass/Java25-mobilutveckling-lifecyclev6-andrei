@@ -25,6 +25,14 @@
         tools:layout_editor_absoluteX="34dp"
         tools:layout_editor_absoluteY="482dp" />
 
+    <RadioButton
+        android:id="@+id/profileGenderOther"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Other"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="530dp" />
+
     <EditText
         android:id="@+id/profileName"
         android:layout_width="wrap_content"
@@ -40,7 +48,7 @@
         app:layout_constraintVertical_bias="0.16" />
 
     <SeekBar
-        android:id="@+id/profileSeekBar"
+        android:id="@+id/profileHeight"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
