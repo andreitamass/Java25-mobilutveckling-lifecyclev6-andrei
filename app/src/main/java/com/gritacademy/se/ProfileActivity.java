@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
+import android.content.Intent;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -122,6 +123,9 @@ public class ProfileActivity extends AppCompatActivity {
                 }
 
                 editor.apply();
+
+                Intent intent = new Intent(ProfileActivity.this, StepBMIActivity.class);
+                startActivity(intent);
 
             }
         });
