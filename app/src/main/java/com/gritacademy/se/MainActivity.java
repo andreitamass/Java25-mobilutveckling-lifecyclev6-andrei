@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 String password = passwordText.getText().toString();
 
                 if(username.equals("admin") &&  password.equals("test")) {
-                          startActivity(new Intent(MainActivity.this, MainActivity2.class));
+                          startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 } else {
                     Toast.makeText(MainActivity.this, "Wrong input", Toast.LENGTH_SHORT).show();
                 }

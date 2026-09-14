@@ -11,41 +11,39 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="268dp"
+        android:layout_marginStart="18dp"
         android:text="Gender"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileName" />
+        app:layout_constraintBottom_toTopOf="@+id/profileGenderMan"
+        app:layout_constraintStart_toStartOf="@+id/profileGenderMan"
+        app:layout_constraintTop_toTopOf="@+id/profileGenderMan" />
 
     <RadioButton
         android:id="@+id/profileGenderWoman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Woman"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="482dp" />
+        app:layout_constraintStart_toStartOf="@+id/profileGenderMan"
+        app:layout_constraintTop_toBottomOf="@+id/profileGenderMan" />
 
     <RadioButton
         android:id="@+id/profileGenderOther"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Other"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="530dp" />
+        app:layout_constraintStart_toStartOf="@+id/profileGenderWoman"
+        app:layout_constraintTop_toBottomOf="@+id/profileGenderWoman" />
 
     <EditText
         android:id="@+id/profileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="110dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
         android:id="@+id/profileHeight"
@@ -71,25 +69,41 @@
         android:id="@+id/profileWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="38dp"
         android:ems="10"
         android:hint="Weight"
         android:inputType="numberDecimal"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="279dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileHeight" />
 
     <Spinner
         android:id="@+id/profileAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="353dp" />
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileWeight" />
 
     <RadioButton
         android:id="@+id/profileGenderMan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="57dp"
         android:text="Man"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="434dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileAge" />
+
+    <Button
+        android:id="@+id/profileSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="20dp"
+        android:text="Save"
+        app:layout_constraintStart_toStartOf="@+id/profileGenderOther"
+        app:layout_constraintTop_toBottomOf="@+id/profileGenderOther" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
