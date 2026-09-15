@@ -1,5 +1,6 @@
 package com.gritacademy.se;
 
+import android.content.Intent;
 import android.hardware.SensorEventListener;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -13,6 +14,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import android.content.SharedPreferences;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class StepBMIActivity extends AppCompatActivity implements SensorEventListener {
@@ -25,6 +28,7 @@ public class StepBMIActivity extends AppCompatActivity implements SensorEventLis
     private int steps = 0;
     private float lastMagnitude = 0;
     private long lastStepTime = 0;
+    private Button goToProfile;
 
 
     @Override
@@ -36,6 +40,16 @@ public class StepBMIActivity extends AppCompatActivity implements SensorEventLis
         bmiScore = findViewById(R.id.bmiScore);
 
         stepText = findViewById(R.id.stepText);
+
+        goToProfile = findViewById(R.id.goToProfile);
+
+        goToProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StepBMIActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
