@@ -23,6 +23,8 @@ public class StepBMIActivity extends AppCompatActivity implements SensorEventLis
     private Sensor accelerometer;
     private SensorManager sensorManager;
     private int steps = 0;
+    private float lastMagnitude = 0;
+    private long lastStepTime = 0;
 
 
     @Override
@@ -90,12 +92,32 @@ public class StepBMIActivity extends AppCompatActivity implements SensorEventLis
     public void onSensorChanged(SensorEvent event) {
 
         if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
-            stepText.setText("Steps: " + (int) event.values[0]);
-        }
 
-        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            steps++;
-            stepText.setText("Steps: " + steps);
+            int totalSteps = (int) event.values[0];
+            stepText.setText("Steps: " + totalSteps);
+
+        } else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+
+            float x = event.values[0];
+            float y = event.values[1];
+            float z = event.values[2];
+
+            float magnitude = (float) Math.sqrt(x * x + y * y + z * z);
+
+            if (magnitude - lastMagnitude > 2) {
+
+                long currentTime = System.currentTimeMillis();
+
+                if (currentTime - lastStepTime > 500) {
+
+                    steps++;
+                    stepText.setText("Steps: " + steps);
+
+                    lastStepTime = currentTime;
+                }
+            }
+
+            lastMagnitude = magnitude;
         }
     }
 
