@@ -11,16 +11,19 @@
         android:id="@+id/bmiScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="76dp"
         android:text="BMI: "
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="168dp" />
+        app:layout_constraintBottom_toTopOf="@+id/stepText"
+        app:layout_constraintEnd_toEndOf="@+id/stepText" />
 
     <TextView
         android:id="@+id/stepText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="263dp"
         android:text="Steps: 0"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="263dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

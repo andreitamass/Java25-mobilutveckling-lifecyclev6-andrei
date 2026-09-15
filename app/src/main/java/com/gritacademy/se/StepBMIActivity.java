@@ -46,19 +46,42 @@ public class StepBMIActivity extends AppCompatActivity implements SensorEventLis
 
         bmiScore.setText("BMI: " + bmi);
 
-        stepText = findViewById(R.id.stepText);
-
-        Sensor
-
-
-
-
-
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        sensorManager.registerListener(
+                this,
+                stepCounter,
+                SensorManager.SENSOR_DELAY_NORMAL
+        );
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+        int steps = (int) event.values[0];
+
+        stepText.setText("Steps: " + steps);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
 }
+
