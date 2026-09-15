@@ -1,5 +1,9 @@
 package com.gritacademy.se;
 
+import android.hardware.SensorEventListener;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -11,9 +15,13 @@ import androidx.core.view.WindowInsetsCompat;
 import android.content.SharedPreferences;
 import android.widget.TextView;
 
-public class StepBMIActivity extends AppCompatActivity {
+public class StepBMIActivity extends AppCompatActivity implements SensorEventListener {
 
     private TextView bmiScore;
+    private TextView stepText;
+    private Sensor stepCounter;
+    private SensorManager sensorManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +30,12 @@ public class StepBMIActivity extends AppCompatActivity {
         setContentView(R.layout.activity_step_bmiactivity);
 
         bmiScore = findViewById(R.id.bmiScore);
+
+        stepText = findViewById(R.id.stepText);
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+        stepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
 
         SharedPreferences preferences = getSharedPreferences("profile", 0);
 
@@ -32,6 +46,9 @@ public class StepBMIActivity extends AppCompatActivity {
 
         bmiScore.setText("BMI: " + bmi);
 
+        stepText = findViewById(R.id.stepText);
+
+        Sensor
 
 
 

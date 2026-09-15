@@ -14,4 +14,13 @@
         android:text="BMI: "
         tools:layout_editor_absoluteX="149dp"
         tools:layout_editor_absoluteY="168dp" />
+
+    <TextView
+        android:id="@+id/stepText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Steps: 0"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="263dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
