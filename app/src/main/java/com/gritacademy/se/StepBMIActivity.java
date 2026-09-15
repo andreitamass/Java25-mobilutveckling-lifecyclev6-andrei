@@ -20,7 +20,9 @@ public class StepBMIActivity extends AppCompatActivity implements SensorEventLis
     private TextView bmiScore;
     private TextView stepText;
     private Sensor stepCounter;
+    private Sensor accelerometer;
     private SensorManager sensorManager;
+    private int steps = 0;
 
 
     @Override
@@ -36,6 +38,8 @@ public class StepBMIActivity extends AppCompatActivity implements SensorEventLis
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         stepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         SharedPreferences preferences = getSharedPreferences("profile", 0);
 
@@ -58,11 +62,21 @@ public class StepBMIActivity extends AppCompatActivity implements SensorEventLis
     protected void onResume() {
         super.onResume();
 
-        sensorManager.registerListener(
-                this,
-                stepCounter,
-                SensorManager.SENSOR_DELAY_NORMAL
-        );
+        if (stepCounter != null) {
+            sensorManager.registerListener(
+                    this,
+                    stepCounter,
+                    SensorManager.SENSOR_DELAY_NORMAL
+            );
+        } else if(accelerometer != null) {
+            sensorManager.registerListener(
+                    this,
+                    accelerometer,
+                    SensorManager.SENSOR_DELAY_NORMAL
+            );
+            stepText.setText("Stepcounter not working");
+        }
+
     }
 
     @Override
@@ -75,9 +89,14 @@ public class StepBMIActivity extends AppCompatActivity implements SensorEventLis
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        int steps = (int) event.values[0];
+        if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
+            stepText.setText("Steps: " + (int) event.values[0]);
+        }
 
-        stepText.setText("Steps: " + steps);
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            steps++;
+            stepText.setText("Steps: " + steps);
+        }
     }
 
     @Override
