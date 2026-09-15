@@ -58,6 +58,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         profileHeight.setProgress(180);
 
+        SharedPreferences preferences =
+                getSharedPreferences("profile", 0);
+
+        profileName.setText(preferences.getString("name", ""));
+        profileWeight.setText(preferences.getString("weight", ""));
+
         profileHeight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
