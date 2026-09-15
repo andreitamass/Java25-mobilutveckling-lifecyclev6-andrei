@@ -32,6 +32,8 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView heightView;
     private Button profileSaveButton;
 
+    private Button goToSteps;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,8 @@ public class ProfileActivity extends AppCompatActivity {
         profileGenderOther = findViewById(R.id.profileGenderOther);
 
         profileSaveButton = findViewById(R.id.profileSaveButton);
+
+        goToSteps = findViewById(R.id.goToSteps);
 
         heightView = findViewById(R.id.textView);
 
@@ -130,12 +134,13 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
+        goToSteps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, StepBMIActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

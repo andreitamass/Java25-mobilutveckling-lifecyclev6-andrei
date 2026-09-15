@@ -106,4 +106,14 @@
         app:layout_constraintStart_toStartOf="@+id/profileGenderOther"
         app:layout_constraintTop_toBottomOf="@+id/profileGenderOther" />
 
+    <Button
+        android:id="@+id/goToSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="12dp"
+        android:text="Go to steps"
+        app:layout_constraintStart_toStartOf="@+id/profileSaveButton"
+        app:layout_constraintTop_toBottomOf="@+id/profileSaveButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
